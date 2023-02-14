@@ -17,7 +17,7 @@ export class AppController {
   }
 
   @Get('tarhely')
-  async listCsavar() {
+  async listTarhely() {
     const tarhelyRepo = this.dataSource.getRepository(Tarhely);
     return await tarhelyRepo.find();
   }
@@ -30,7 +30,7 @@ export class AppController {
   }
 
   @Delete('tarhely/:id')
-  deleteCsavar(@Param('id') id: number) {
+  deleteTarhely(@Param('id') id: number) {
     const tarhelyRepo = this.dataSource.getRepository(Tarhely);
     tarhelyRepo.delete(id);
   }
