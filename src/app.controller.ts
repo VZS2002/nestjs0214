@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Render } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Render } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import { AppService } from './app.service';
 import { Tarhely } from './entities/tarhelySzolgaltatas.entity';
@@ -27,5 +27,11 @@ export class AppController {
     tarhely.id = undefined;
     const tarhelyRepo = this.dataSource.getRepository(Tarhely);
     tarhelyRepo.save(tarhely);
+  }
+
+  @Delete('tarhely/:id')
+  deleteCsavar(@Param('id') id: number) {
+    const tarhelyRepo = this.dataSource.getRepository(Tarhely);
+    tarhelyRepo.delete(id);
   }
 }
